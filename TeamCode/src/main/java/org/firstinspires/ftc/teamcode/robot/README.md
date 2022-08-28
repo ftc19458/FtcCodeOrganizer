@@ -19,17 +19,17 @@ package org.firstinspires.ftc.teamcode.robot;
 
 public class Example extends Subsystem{
     //instance variables here
-
+    
     public Example() {
         super();
         //constructor code here
     }
-
+    
     @Override
     public void manualControl() {
         //teleop code here
     }
-
+    
     //other methods here
 }
 ```
@@ -50,8 +50,8 @@ To call a method from a subsystem in your OpMode, just use this line below and p
 If you want, you can also add this method to the Robot class to call it more easily using `Robot.getExample()`:
 ```java
 public Example getExample() {
-        return (Example) (getSubsystem(Example.class).get());
-        }
+    return (Example) (getSubsystem(Example.class).get());
+}
 ```
 
 ## Autonomous
