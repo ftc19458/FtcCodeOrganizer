@@ -1,6 +1,10 @@
 # FTC Code Organizer
 
-This template created by team 19458 Equilibrium.exe makes it easy to keep your code organized and allows the Autonomous and TeleOp periods to share code.
+This template created by team 19458 Equilibrium.exe makes it easy to keep yo ur code organized and allows the Autonomous and TeleOp periods to share code.
+
+## How it works
+
+Each subsystem will have it's own class that will handle all motors, servos, and sensors for that subsystem. Instances of these classes are stored in the `Robot` class, so creating an instance of the `Robot` class is all you have to do during initialization. Because these classes are the same for all OpModes, they can all use the same methods.
 
 ## Setup
 
