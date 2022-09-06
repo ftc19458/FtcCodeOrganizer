@@ -1,6 +1,6 @@
 # FTC Code Organizer
 
-This template created by team 19458 Equilibrium.exe makes it easy to keep yo ur code organized and allows the Autonomous and TeleOp periods to share code.
+This template created by team 19458 Equilibrium.exe makes it easy to keep your code organized and allows the Autonomous and TeleOp periods to share code.
 
 ## Overview
 
