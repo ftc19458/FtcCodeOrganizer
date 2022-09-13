@@ -84,7 +84,7 @@ All teleop code should be written in the `manualControl()` methods of subsystems
 
 ```java
 @TeleOp
-public class TeleOp extends LinearOpMode {
+public class Teleop extends LinearOpMode {
     private Robot robot;
 
     @Override
