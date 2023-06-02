@@ -4,15 +4,11 @@ This template created by team 19458 Equilibrium.exe makes it easy to keep your c
 
 ## Overview
 
-Each subsystem has its own class that handles all motors, servos, and sensors for that subsystem. Instances of these classes are stored in the `Robot` class, so creating an instance of the `Robot` class is all that's needed during initialization. Since these classes are the same for all OpModes, they can all use the same methods.
+Each subsystem has its own class that handles all motors, servos, and sensors for that subsystem. Instances of these classes are stored in the `Robot` class, which extends `LinearOpMode`.
 
 ## Setup
 
-The easiest way to use the template is to fork this repository. If your team already has the SDK installed, you can manually download the `robot` package into the `teamcode` directory, and add the following line to the `dependencies` section of `TeamCode/build.gradle`:
-
-```java
-implementation 'com.google.guava:guava:31.1-android'
-```
+The easiest way to use the template is to fork or clone this repository. If your team already has the SDK installed, you can manually download the `robot` package into the `teamcode` directory.
 
 ## Creating Subsystems
 
@@ -25,38 +21,36 @@ public class Example extends Subsystem{
     //instance variables here
     
     public Example() {
-        super();
-        //constructor code here
+        //init code here
+    }
+
+    @Override
+    public void onStart() {
+        //teleop run code here
     }
     
     @Override
     public void manualControl() {
-        //teleop code here
+        //teleop loop code here
     }
     
     //other methods here
 }
 ```
 
-Replace `Example` with the name of the subsystem (and file name), then implement code where the comments tell you to. You will also need to add the subsystem to the `Robot` class. You can do this by adding the following line to the end of the constructor:
+Replace `Example` with the name of the subsystem (and file name), then implement code where the comments tell you to. You will also need to add the subsystem to the `Robot` class. You can do this by creating the following instance variable:
 
 ```java
-subsystems.putInstance(Example.class, new Example());
+protected Example example;
 ```
-Again, replace `Example` with the name of the subsystem.
 
-To call a method from a subsystem in your OpMode, just use this line below and pass in the class for the subsystem:
-
+You will also need to initialize the variable and add it to the list in the constructor:
 ```java
-((Example) (robot.getSubsystem(Example.class).get())).example();
+example = new Example();
+subsystems.add(example);
 ```
 
-If you want, you can also add this method to the Robot class to call it more easily using `Robot.getExample()`:
-```java
-public Example getExample() {
-    return (Example) (getSubsystem(Example.class).get());
-}
-```
+To call a method from a subsystem OpMode, you can reference the variable you created.
 
 ## Autonomous
 
@@ -64,38 +58,32 @@ You can start your autonomous program with this starter code:
 
 ```java
 @Autonomous
-public class Auto extends LinearOpMode {
-    private Robot robot;
-
+public class Auto extends Robot {
     @Override
     public void runOpMode() throws InterruptedException {
-        robot = new Robot(hardwareMap, telemetry, true, Alliance.BLUE, gamepad1, gamepad2, this);
+        init(Alliance.Blue, true);
 
         waitForStart();
 
-        //auto path here
+        //auto code here
     }
 }
 ```
 
 ## TeleOp
 
-All teleop code should be written in the `manualControl()` methods of subsystems, and the `fullManualControl()` method in the `Robot` class. Gamepads should only be called from the `Controls` class. Because of this, your teleop code can be as simple as this:
+All teleop code should be written in the `onStart()` and `manualControl()` methods of subsystems, and the `teleOp()` method in the `Robot` class. Gamepads should only be called from the `Controls` class. Because of this, your teleop code can be as simple as this:
 
 ```java
 @TeleOp
-public class Teleop extends LinearOpMode {
-    private Robot robot;
-
+public class Teleop extends Robot {
     @Override
     public void runOpMode() throws InterruptedException {
-        robot = new Robot(hardwareMap, telemetry, false, Subsystem.alliance, gamepad1, gamepad2, this);
+        init(Subsystem.alliance, false);
 
         waitForStart();
 
-        while (opModeIsActive()) {
-            robot.fullManualControl();
-        }
+        teleOp();
     }
 }
 ```
