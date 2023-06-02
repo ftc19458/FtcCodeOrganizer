@@ -19,24 +19,8 @@ public abstract class Subsystem {
     protected static HardwareMap hardwareMap;
     protected static LinearOpMode opMode;
 
-    public Subsystem() {
-        timer = new ElapsedTime();
-    }
-
+    public abstract void onStart();
     public abstract void manualControl();
-
-    public void resetTimer() {
-        timer.reset();
-    }
-
-    public double getTime() {
-        return timer.milliseconds();
-    }
-
-    public void wait(int time) {
-        resetTimer();
-        while (opMode.opModeIsActive() && getTime() < time) ;
-    }
 
     public static void init(Controls c, Alliance al, boolean au, Telemetry t, HardwareMap hm, LinearOpMode opmode) {
         controls = c;
