@@ -12,7 +12,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public abstract class Subsystem {
     protected static Telemetry telemetry;
-    protected ElapsedTime timer;
     protected static boolean auto;
     public static Alliance alliance;
     protected static Controls controls;
