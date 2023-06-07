@@ -61,7 +61,7 @@ You can start your autonomous program with this starter code:
 public class Auto extends Robot {
     @Override
     public void runOpMode() throws InterruptedException {
-        init(Alliance.Blue, true);
+        init(Alliance.BLUE,true);
 
         waitForStart();
 

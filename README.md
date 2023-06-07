@@ -19,7 +19,7 @@ package org.firstinspires.ftc.teamcode.robot;
 
 public class Example extends Subsystem{
     //instance variables here
-    
+
     public Example() {
         //init code here
     }
@@ -28,12 +28,12 @@ public class Example extends Subsystem{
     public void onStart() {
         //teleop run code here
     }
-    
+
     @Override
     public void manualControl() {
         //teleop loop code here
     }
-    
+
     //other methods here
 }
 ```
@@ -47,7 +47,7 @@ protected Example example;
 You will also need to initialize the variable and add it to the list in the constructor:
 ```java
 example = new Example();
-subsystems.add(example);
+        subsystems.add(example);
 ```
 
 To call a method from a subsystem OpMode, you can reference the variable you created.
@@ -61,7 +61,7 @@ You can start your autonomous program with this starter code:
 public class Auto extends Robot {
     @Override
     public void runOpMode() throws InterruptedException {
-        init(Alliance.Blue, true);
+        init(Alliance.BLUE,true);
 
         waitForStart();
 
