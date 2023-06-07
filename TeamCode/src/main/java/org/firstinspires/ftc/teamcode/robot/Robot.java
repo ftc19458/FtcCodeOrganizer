@@ -36,5 +36,6 @@ public abstract class Robot extends LinearOpMode {
                 subsystem.manualControl();
             }
         }
+        telemetry.update();
     }
 }
