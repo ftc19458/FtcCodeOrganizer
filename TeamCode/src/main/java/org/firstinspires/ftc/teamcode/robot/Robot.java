@@ -34,8 +34,8 @@ public abstract class Robot extends LinearOpMode {
         while (opModeIsActive()) {
             for (Subsystem subsystem: subsystems) {
                 subsystem.manualControl();
+                telemetry.update();
             }
         }
-        telemetry.update();
     }
 }
